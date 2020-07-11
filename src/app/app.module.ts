@@ -6,9 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 //Modulos
 import {PagesModule} from './pages/pages.module';
 
+//temp
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +23,7 @@ import { RegisterComponent } from './login/register.component';
   imports: [
     BrowserModule,
     PagesModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
