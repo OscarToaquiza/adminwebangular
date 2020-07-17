@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 //Modulos
-import {PagesModule} from './pages/pages.module';
+import { PagesModule } from './pages/pages.module';
+import { AuthModule } from './auth/auth.module';
 import { ServiceModule } from './services/service.module';
 
 //Service
@@ -13,22 +14,22 @@ import { ServiceModule } from './services/service.module';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './login/register.component';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent
+    NopagefoundComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     PagesModule,
+    AuthModule,
     FormsModule,
-    ServiceModule,
-    AppRoutingModule
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

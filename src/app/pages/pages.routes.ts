@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 
@@ -11,10 +12,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 
 const pagesRoutes: Routes = [
     { 
-        path: '', 
+        path: 'dashboard', 
         component: PagesComponent,
         children:[
-          { path: 'dashboard', component:DashboardComponent, data: { titulo: 'Dashboard' }},
+          { path: '', component:DashboardComponent, data: { titulo: 'Dashboard' }},
           { path: 'progress', component:ProgressComponent, data: { titulo: 'Progress' } },
           { path: 'graficas1', component:Graficas1Component,  data: { titulo: 'Gráficas' } },
           { path: 'promesas', component:PromesasComponent,  data: { titulo: 'Promesas' } },
@@ -26,4 +27,9 @@ const pagesRoutes: Routes = [
 
 ];
 
-export const PagesRouters = RouterModule.forChild(pagesRoutes);
+@NgModule({
+  imports: [RouterModule.forChild(pagesRoutes)],
+  exports: [RouterModule]
+})
+
+export class PageRoutingModule {}

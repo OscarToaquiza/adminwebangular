@@ -12,13 +12,19 @@ export class IncrementadorComponent implements OnInit {
 
 @Input('nombre') leyenda: string = 'Leyenda';
 @Input() porcentaje:number = 50;
+@Input() btnClass:string = 'btn-primary';
 
 @Output('valorActualizar') cambioPorcentaje: EventEmitter<number> = new EventEmitter();
+
+
 
   constructor() { 
   }
 
   ngOnInit(): void {
+
+    this.btnClass = `btn ${this.btnClass}`;
+
   }
 
 
