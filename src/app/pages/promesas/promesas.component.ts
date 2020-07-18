@@ -10,14 +10,17 @@ export class PromesasComponent implements OnInit {
 
   constructor() { 
 
-    this.contarTres().then(
-      res => console.log('TERMINO!!', res)
-    ).catch(
-      error => console.log('Error en la promesa',error)
-    )
+    // this.contarTres().then(
+    //   res => console.log('TERMINO!!', res)
+    // ).catch(
+    //   error => console.log('Error en la promesa',error)
+    // )
   }
 
   ngOnInit(): void {
+    this.getUsuarios().then( response => {
+      console.log(response);
+    } )
   }
 
 
@@ -58,6 +61,19 @@ export class PromesasComponent implements OnInit {
    // return promesa;
   }
 
+
+  getUsuarios(){
+
+    const promesa = new Promise( (resolve) => {
+
+      fetch('https://reqres.in/api/users')
+      .then( resp => resp.json())
+      .then( res => resolve(res.data));
+
+    });
+    return promesa;
+  }
+    
 
 
 }

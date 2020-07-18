@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscriber, Subscription } from 'rxjs';
-import { filter, map, retry } from 'rxjs/operators';
+import { Observable, Subscriber, Subscription, interval } from 'rxjs';
+import { filter, map, retry, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
@@ -11,34 +11,41 @@ import { filter, map, retry } from 'rxjs/operators';
 export class RxjsComponent implements OnInit, OnDestroy {
 
 
+  public intervaloSus : Subscription;
   susbscription: Subscription;
 
   constructor() { 
 
 
-this.susbscription = this.regresaObservavle().pipe(
-      retry(2),
-      map( resp => {
-        return resp.valor
-      }),
-      filter( (valor, index) => {
-        //console.log( 'Filtros ', valor, index );
-        if( (valor%2) === 1 ){
-          return true;
-        }else{
-          return false;
-        }
-      } )
-    ).subscribe( resp => {
-      console.log( 'Subs ', resp);
-    },
-    error => {
-      console.error('Error en el observable',error);
-    },
-    () => {
-      console.log('El observador ha terminado')
-    }
+// this.susbscription = this.regresaObservavle().pipe(
+//       retry(2),
+//       map( resp => {
+//         return resp.valor
+//       }),
+//       filter( (valor, index) => {
+//         //console.log( 'Filtros ', valor, index );
+//         if( (valor%2) === 1 ){
+//           return true;
+//         }else{
+//           return false;
+//         }
+//       } )
+//     ).subscribe( resp => {
+//       console.log( 'Subs ', resp);
+//     },
+//     error => {
+//       console.error('Error en el observable',error);
+//     },
+//     () => {
+//       console.log('El observador ha terminado')
+//     }
+//     );
+
+
+    this.intervaloSus = this.retornIntervalo().subscribe(
+      console.log
     );
+
 
   }
 
@@ -48,7 +55,9 @@ this.susbscription = this.regresaObservavle().pipe(
 
   ngOnDestroy(){
     console.log("La pagina se va cerrar");
-    this.susbscription.unsubscribe();
+    //this.susbscription.unsubscribe();
+    this.intervaloSus.unsubscribe();
+    //Me da error si el suscribe nose inicializa.
   }
 
 
@@ -84,6 +93,25 @@ this.susbscription = this.regresaObservavle().pipe(
 
     //return obs;
 
+  }
+
+
+  retornIntervalo(): Observable<any>{
+    return interval(500)
+                      .pipe(
+                        take(100),
+                        map( resp => resp + 1 ),
+                        filter( resp => {
+                          if( resp % 2 === 0  ){
+                            console.log('NumPar');
+                            return true;
+                          }else{
+                            console.log('NumImpar');
+                            return false;
+                          }
+                        })
+    );
+    
   }
 
 }

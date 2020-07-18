@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
 import { ActivationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { filter,map } from 'rxjs/operators';
 
 @Component({
@@ -9,14 +10,15 @@ import { filter,map } from 'rxjs/operators';
   styles: [
   ]
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
 
   public titulo: string;
+  public titulosSubs$: Subscription;
 
   constructor( private router:Router, private title: Title, private meta : Meta ) { 
 
-   this.getDataRouter().subscribe(
+   this.titulosSubs$ = this.getDataRouter().subscribe(
       data => {
         console.log(data);
         this.titulo = data.titulo;
@@ -32,6 +34,9 @@ export class BreadcrumbsComponent implements OnInit {
       }
     );
 
+  }
+  ngOnDestroy(): void {
+    this.titulosSubs$.unsubscribe();
   }
 
   ngOnInit(): void {

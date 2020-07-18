@@ -7,37 +7,18 @@ import { SettingService } from '../../services/service.index';
   styleUrls: ['./account-settings.component.css']
 })
 export class AccountSettingsComponent implements OnInit {
-
+  
   constructor(
-    public _ajustes : SettingService
+    private settingService: SettingService
   ) { }
 
   ngOnInit(): void {
-    this.colocarCheck();
+    this.settingService.cheekCurrentThema();  
   }
 
-  cambiarColor( color: string, link: any ){
-    this.aplicarCheck(link);
-    this._ajustes.aplicarTema( color );
+  cambiarColor( theme: string){
+    this.settingService.cambiarColor(theme);
   }
 
-  aplicarCheck( link:any ){
-    let selectores: any = document.getElementsByClassName('selector');
-    for(let ref of selectores) {
-      ref.classList.remove('working');
-    }
-    link.classList.add('working');
-  }
-
-  colocarCheck(){
-    let selectores: any = document.getElementsByClassName('selector');
-    let tema = this._ajustes.ajustes.tema;
-    for(let ref of selectores) {
-      if( ref.getAttribute('data-theme') == tema ){
-        ref.classList.add('working');
-        break;
-      }
-    }
-  }
 
 }
