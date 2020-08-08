@@ -2,7 +2,7 @@ import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/templa
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/shared/usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
 
 declare function init_plugins();

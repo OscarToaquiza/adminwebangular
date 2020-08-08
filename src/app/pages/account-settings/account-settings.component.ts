@@ -1,5 +1,5 @@
 import { Component,  ElementRef,  OnInit } from '@angular/core';
-import { SettingService } from '../../services/service.index';
+import { SettingService } from '../../services/setting.service';
 
 @Component({
   selector: 'app-account-settings',
