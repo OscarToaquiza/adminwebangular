@@ -4,23 +4,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
-
+import { ModalImagenComponent } from '../components/modal-imagen/modal-imagen.component';
 //ng2 chars
 import { ChartsModule } from 'ng2-charts';
+import { from } from 'rxjs';
 
 @NgModule({
     imports:[
         CommonModule,
         FormsModule,
-        ChartsModule
+        ChartsModule,
     ],
     declarations:[
         IncrementadorComponent,
-        GraficoDonaComponent
+        GraficoDonaComponent,
+        ModalImagenComponent
     ],
     exports:[
         IncrementadorComponent,
-        GraficoDonaComponent
+        GraficoDonaComponent,
+        ModalImagenComponent
     ]
 })
 

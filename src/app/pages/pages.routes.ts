@@ -12,6 +12,10 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
+import { MedicoComponent } from './mantenimiento/medicos/medico.component';
 
 const pagesRoutes: Routes = [
     { 
@@ -27,6 +31,13 @@ const pagesRoutes: Routes = [
           { path: 'account-setting', component:AccountSettingsComponent,  data: { titulo: 'Ajustes del Tema' } },
           { path: 'perfil', component:PerfilComponent,  data: { titulo: 'Perfil de Usuario' } },
           { path: '', redirectTo: '/dashboard' , pathMatch: 'full' },
+
+          //Matenimientos
+          { path: 'usuarios', component:UsuariosComponent,  data: { titulo: 'Usuarios de Aplicación' } },
+          { path: 'hospitales', component:HospitalesComponent,  data: { titulo: 'Hospitales' } },
+          { path: 'medicos', component:MedicosComponent,  data: { titulo: 'Medicos' } },
+          { path: 'medico/:id', component:MedicoComponent,  data: { titulo: 'Editar Medico' } },
+
         ]
       }
 

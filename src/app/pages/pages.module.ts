@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages.component';
 import { ComponentsModule } from '../components/components.module';
 
+import { PipesModule } from '../pipes/pipes.module';
 
 //Componentes
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -17,6 +18,10 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
+import { MedicoComponent } from './mantenimiento/medicos/medico.component';
 
 @NgModule({
 
@@ -28,7 +33,11 @@ import { PerfilComponent } from './perfil/perfil.component';
         AccountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        PerfilComponent
+        PerfilComponent,
+        UsuariosComponent,
+        HospitalesComponent,
+        MedicosComponent,
+        MedicoComponent
     ],
     imports:[
         CommonModule,
@@ -36,7 +45,8 @@ import { PerfilComponent } from './perfil/perfil.component';
         RouterModule,
         ReactiveFormsModule,
         SharedModule,
-        ComponentsModule
+        ComponentsModule,
+        PipesModule
     ],
     exports:[
         PagesComponent,
