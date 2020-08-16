@@ -1,3 +1,4 @@
+import { IfStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,8 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
+  public menu:any = []
 
-  menu:any = [
+  /*menu:any = [
     {
       titulo: 'Principal',
       icono: 'mdi mdi-gauge',
@@ -43,7 +45,13 @@ export class SidebarService {
         }
       ]
     }
-  ]
+  ]*/
 
-  constructor() { }
+  cargarMenu(){
+    this.menu = JSON.parse( localStorage.getItem('menu') ) || [];
+
+    if(this.menu.length === 0){
+      console.log("No existe menu");
+    }
+  }
 }

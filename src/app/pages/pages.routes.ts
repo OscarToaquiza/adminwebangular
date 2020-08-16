@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from '../guards/auth.guard';
+import { AdminGuard } from '../guards/admin.guard';
 
 import { PagesComponent } from './pages.component';
 
@@ -16,6 +17,7 @@ import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
 import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
 import { MedicoComponent } from './mantenimiento/medicos/medico.component';
+import { BusquedasComponent } from './busquedas/busquedas.component';
 
 const pagesRoutes: Routes = [
     { 
@@ -33,11 +35,14 @@ const pagesRoutes: Routes = [
           { path: '', redirectTo: '/dashboard' , pathMatch: 'full' },
 
           //Matenimientos
-          { path: 'usuarios', component:UsuariosComponent,  data: { titulo: 'Usuarios de Aplicación' } },
           { path: 'hospitales', component:HospitalesComponent,  data: { titulo: 'Hospitales' } },
           { path: 'medicos', component:MedicosComponent,  data: { titulo: 'Medicos' } },
           { path: 'medico/:id', component:MedicoComponent,  data: { titulo: 'Editar Medico' } },
-
+          
+          { path: 'buscar/:termino', component:BusquedasComponent,  data: { titulo: 'Busqueda' } },
+         
+          //Rutas de admin
+          { path: 'usuarios', canActivate:[AdminGuard], component:UsuariosComponent,  data: { titulo: 'Usuarios de Aplicación' } },
         ]
       }
 
